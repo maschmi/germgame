@@ -2,6 +2,6 @@
 {
     internal interface ICellVisitor
     {
-        Cell Visit(bool isAlive, ushort selfSignal, ushort alertSignal);
+        void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected);
     }
 }
