@@ -1,7 +1,9 @@
-﻿namespace CellGame.Germs
+﻿using CellGame.Tissue;
+
+namespace CellGame.Germs
 {
-    public interface IGerm
+    internal interface IGerm : ICellVisitor
     {
-        
+        Cell InfectCell(Cell cellToInfect);
     }
 }

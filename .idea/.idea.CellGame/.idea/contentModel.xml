@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_CellGame.1171046884.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\martin\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\martin\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_CellGame.1819015947.00" t="ExcludeRecursive" />
+    <e p="C:\Users\martin\source\repos\germgame" t="IncludeFlat">
       <e p="CellGame" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
         <e p="CellGame.csproj" t="IncludeRecursive" />
+        <e p="CellPrinter.cs" t="Include" />
         <e p="Germs" t="Include">
-          <e p="GermFactory.cs" t="Include" />
+          <e p="DefaultGermFactory.cs" t="Include" />
           <e p="IGerm.cs" t="Include" />
           <e p="IGermFactory.cs" t="Include" />
           <e p="NullGerm.cs" t="Include" />
         </e>
-        <e p="ImmuneSystem" t="Include" />
-        <e p="ListShuffle" t="Include">
+        <e p="Helper" t="Include">
           <e p="FisherYatesShuffle.cs" t="Include" />
           <e p="IShuffle.cs" t="Include" />
+          <e p="ThreadSafeRandom.cs" t="Include" />
         </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Tissue" t="Include">
-          <e p="Cell.cs" t="Include" />
-          <e p="DefaultCellFactory.cs" t="Include" />
-          <e p="ICellFactory.cs" t="Include" />
-          <e p="ICellVisitor.cs" t="Include" />
-          <e p="Location.cs" t="Include" />
-          <e p="Tissue2D.cs" t="Include" />
-        </e>
-        <e p="TissuePrinter.cs" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
+        <e p="ImmuneSystem" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
@@ -35,11 +27,20 @@
             </e>
           </e>
         </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Tissue" t="Include">
+          <e p="Cell.cs" t="Include" />
+          <e p="DefaultCellFactory.cs" t="Include" />
+          <e p="ICellFactory.cs" t="Include" />
+          <e p="ICellVisitor.cs" t="Include" />
+          <e p="ITissueVisitor.cs" t="Include" />
+          <e p="Location.cs" t="Include" />
+          <e p="Tissue2D.cs" t="Include" />
+          <e p="Tissue2DFactory.cs" t="Include" />
+          <e p="TissuePrinter.cs" t="Include" />
+        </e>
       </e>
       <e p="CellGame.sln" t="IncludeFlat" />
-      <e p="CellGameTest" t="IncludeRecursive">
-        <e p="CellGameTest.csproj" t="IncludeRecursive" />
-      </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>

@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using CellGame.Germs;
 
 namespace CellGame.Tissue
 {
+    [ExcludeFromCodeCoverage] //Immutable DTO
     internal sealed class Cell
+    
     {
         private readonly bool _isAlive;
         private readonly bool _isInfected;

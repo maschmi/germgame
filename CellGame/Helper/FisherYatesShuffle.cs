@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace CellGame.ListShuffle
 {
@@ -24,15 +21,5 @@ namespace CellGame.ListShuffle
 
             return result;
         }
-
-        private static class ThreadSafeRandom
-        {
-            [ThreadStatic] private static Random _rnd;
-
-            public static Random GetRandomGenerator
-                 => _rnd ??= new Random(unchecked(Environment.TickCount * 21 * Thread.CurrentThread.ManagedThreadId));
-        }
-        
-        
     }
 }
