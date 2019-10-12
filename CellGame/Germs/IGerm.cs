@@ -2,7 +2,7 @@
 
 namespace CellGame.Germs
 {
-    internal interface IGerm : ICellVisitor
+    public interface IGerm : ICellVisitor
     {
         Cell InfectCell(Cell cellToInfect);
     }

@@ -1,6 +1,6 @@
 ﻿namespace CellGame.Tissue
 {
-    internal struct Location
+    public struct Location
     {
         public int X { get; }
         public int Y { get; }

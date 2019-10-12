@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace CellGame.ListShuffle
 {
-    internal interface IShuffle
+    public interface IShuffle
     {
         IEnumerable<T> Shuffle<T>(in IEnumerable<T> input);
     }

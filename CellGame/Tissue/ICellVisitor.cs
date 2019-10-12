@@ -1,6 +1,6 @@
 ﻿namespace CellGame.Tissue
 {
-    internal interface ICellVisitor
+    public interface ICellVisitor
     {
         void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected);
     }

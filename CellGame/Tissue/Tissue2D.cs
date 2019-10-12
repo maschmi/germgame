@@ -2,18 +2,13 @@
 
 namespace CellGame.Tissue
 {
-    internal sealed class Tissue2D
+    public sealed class Tissue2D
     {
-        private readonly ImmutableDictionary<Location, Cell> _tissue;
-
-        public Tissue2D(ImmutableDictionary<Location, Cell> tissue)
+        public ImmutableDictionary<Location, ICell> Tissue { get; }
+        
+        public Tissue2D(ImmutableDictionary<Location, ICell> tissue)
         {
-            _tissue = tissue ?? ImmutableDictionary<Location, Cell>.Empty;
-        }
-
-        public void Accept(ITissueVisitor visitor)
-        {
-            visitor.Visit(_tissue);
+            Tissue = tissue ?? ImmutableDictionary<Location, ICell>.Empty;
         }
     }
 }

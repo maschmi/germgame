@@ -6,14 +6,19 @@ namespace CellGame.Tissue
 {
     internal class DefaultCellFactory : ICellFactory
     {
-        public Cell CreateHealthyCell() =>
+        public ICell CreateHealthyCell() =>
             new Cell();
 
-        public Cell CreateInfectedCell(IGerm germ) =>
+        public ICell CreateInfectedCell(IGerm germ) =>
             new Cell(true,
                 true,
                 UInt16.MinValue,
                 UInt16.MaxValue,
                 germ);
+
+        public ICell CreateNullCell()
+        {
+            return new NullCell();
+        }
     }
 }

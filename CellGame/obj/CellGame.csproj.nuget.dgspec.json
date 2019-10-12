@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/martin/RiderProjects/germgame/CellGame/CellGame.csproj": {}
+    "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj": {}
   },
   "projects": {
-    "/home/martin/RiderProjects/germgame/CellGame/CellGame.csproj": {
+    "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/martin/RiderProjects/germgame/CellGame/CellGame.csproj",
+        "projectUniqueName": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj",
         "projectName": "CellGame",
-        "projectPath": "/home/martin/RiderProjects/germgame/CellGame/CellGame.csproj",
-        "packagesPath": "/home/martin/.nuget/packages/",
-        "outputPath": "/home/martin/RiderProjects/germgame/CellGame/obj/",
+        "projectPath": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj",
+        "packagesPath": "C:\\Users\\martin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/martin/.config/NuGet/NuGet.Config"
+          "C:\\Users\\martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

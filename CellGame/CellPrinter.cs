@@ -17,7 +17,7 @@ namespace CellGame
                 _currentCellCode = "C";
         }
 
-        public string GetStringRepresentaionOf(Cell cell)
+        public string GetStringRepresentationOf(ICell cell)
         {
             _currentCellCode = string.Empty;
 

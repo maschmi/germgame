@@ -1,6 +1,6 @@
 namespace CellGame.Germs
 {
-    internal interface IGermFactory
+    public interface IGermFactory
     {
         IGerm CreateDefaultGerm();
     }

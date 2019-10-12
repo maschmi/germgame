@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Text;
+using System.Xml;
 
 namespace CellGame.Tissue
 {
-    internal sealed class TissuePrinter : ITissueVisitor
+    internal sealed class TissuePrinter
     {
         private readonly CellPrinter _cellPrinter;
         private readonly Tissue2D _tissue;
@@ -12,22 +14,25 @@ namespace CellGame.Tissue
         private readonly int _maxY;
         private readonly StringBuilder _buffer;
 
-        public TissuePrinter(int maxX, int maxY, Tissue2D tissue, CellPrinter cellPrinter)
+        public TissuePrinter(Tissue2D tissue, CellPrinter cellPrinter)
         {
             _cellPrinter = cellPrinter;
             _tissue = tissue;
             _buffer = new StringBuilder();
-            _maxX = maxX;
-            _maxY = maxY;
+
+            var locations = _tissue.Tissue.Keys;
+
+            _maxX = locations.Select(l => l.X).Max();
+            _maxY = locations.Select(l => l.Y).Max();
         }
 
         public void PrintTissue()
         {
-            _tissue.Accept(this);
+            CreateOutput(_tissue.Tissue);
             Console.WriteLine(_buffer.ToString());
         }
         
-        public void Visit(ImmutableDictionary<Location, Cell> tissue)
+        public void CreateOutput(ImmutableDictionary<Location, ICell> tissue)
         {
             for (int y = 0; y < _maxY; y++)
             {
@@ -35,7 +40,7 @@ namespace CellGame.Tissue
                 {
                     var currentLocation = new Location(y,x);
                     var cell = tissue[currentLocation];
-                    _buffer.Append(_cellPrinter.GetStringRepresentaionOf(cell));
+                    _buffer.Append(_cellPrinter.GetStringRepresentationOf(cell));
                 }
 
                 _buffer.AppendLine();

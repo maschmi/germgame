@@ -4,8 +4,7 @@ using CellGame.Germs;
 
 namespace CellGame.Tissue
 {
-    [ExcludeFromCodeCoverage] //Immutable DTO
-    internal sealed class Cell
+    public sealed class Cell : ICell 
     
     {
         private readonly bool _isAlive;
@@ -13,8 +12,6 @@ namespace CellGame.Tissue
         private readonly ushort _selfSignal;
         private readonly ushort _alertSignal;
         private readonly IGerm _germ;
-
-        public bool IsAlive => _isAlive;
         
         public Cell()
         {
@@ -34,7 +31,7 @@ namespace CellGame.Tissue
             _germ = germ ?? new NullGerm();
         }
 
-        public Cell Clone()
+        public ICell Clone()
         {
             return new Cell(_isAlive, _isInfected, _selfSignal, _alertSignal, _germ);
         }
