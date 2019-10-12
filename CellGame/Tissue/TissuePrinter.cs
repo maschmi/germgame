@@ -38,7 +38,7 @@ namespace CellGame.Tissue
             {
                 for (int x = 0; x < _maxX; x++)
                 {
-                    var currentLocation = new Location(y,x);
+                    var currentLocation = new Location(x,y);
                     var cell = tissue[currentLocation];
                     _buffer.Append(_cellPrinter.GetStringRepresentationOf(cell));
                 }

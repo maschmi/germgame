@@ -3,7 +3,7 @@ using System.Reflection;
 using AutoFixture;
 using AutoFixture.Xunit2;
 
-namespace CellGameTest.Tissue
+namespace CellGameTest.TestAttributes
 {
     public class RatioAttribute : CustomizeAttribute
     {

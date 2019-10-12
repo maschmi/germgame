@@ -37,12 +37,15 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Tissue" t="Include">
-          <e p="Cell.cs" t="Include" />
           <e p="DefaultCellFactory.cs" t="Include" />
+          <e p="HealthyCell.cs" t="Include" />
+          <e p="ICell.cs" t="Include" />
           <e p="ICellFactory.cs" t="Include" />
           <e p="ICellVisitor.cs" t="Include" />
+          <e p="InfectedCell.cs" t="Include" />
           <e p="ITissueVisitor.cs" t="Include" />
           <e p="Location.cs" t="Include" />
+          <e p="NullCell.cs" t="Include" />
           <e p="Tissue2D.cs" t="Include" />
           <e p="Tissue2DFactory.cs" t="Include" />
           <e p="TissuePrinter.cs" t="Include" />
@@ -59,10 +62,12 @@
             </e>
           </e>
         </e>
-        <e p="Tissue" t="Include">
+        <e p="TestAttributes" t="Include">
           <e p="AutoMoqData.cs" t="Include" />
           <e p="RatioAttribute.cs" t="Include" />
           <e p="RatioCustomization.cs" t="Include" />
+        </e>
+        <e p="Tissue" t="Include">
           <e p="Tissue2DFactoryTest.cs" t="Include" />
         </e>
         <e p="UnitTest1.cs" t="Include" />

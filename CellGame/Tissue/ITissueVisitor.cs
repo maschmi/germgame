@@ -4,6 +4,6 @@ namespace CellGame.Tissue
 {
     internal interface ITissueVisitor
     {
-        void Visit(ImmutableDictionary<Location, Cell> tissue);
+        void Visit(ImmutableDictionary<Location, HealthyCell> tissue);
     }
 }

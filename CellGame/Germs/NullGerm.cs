@@ -5,21 +5,17 @@ namespace CellGame.Germs
 {
     internal sealed class NullGerm : IGerm
     {
-        private Cell _cellToReturn;
+        private ICell _healthyCellToReturn;
         
         public void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
         {
-            _cellToReturn = new Cell(isAlive,
-                isInfected,
-                selfSignal,
-                alertSignal,
-                this);
+            _healthyCellToReturn = new HealthyCell();
         }
 
-        public Cell InfectCell(Cell cellToInfect)
+        public ICell InfectCell(ICell healthyCellToInfect)
         {
-            cellToInfect.Accept(this);
-            return _cellToReturn;
+            healthyCellToInfect.Accept(this);
+            return _healthyCellToReturn;
         }
     }
 }

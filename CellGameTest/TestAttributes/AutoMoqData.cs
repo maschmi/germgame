@@ -2,7 +2,7 @@
 using AutoFixture.AutoMoq;
 using AutoFixture.Xunit2;
 
-namespace CellGameTest.Tissue
+namespace CellGameTest.TestAttributes
 {
     public class AutoMoqData : AutoDataAttribute
     {

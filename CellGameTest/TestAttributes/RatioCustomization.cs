@@ -1,6 +1,6 @@
 ﻿using AutoFixture;
 
-namespace CellGameTest.Tissue
+namespace CellGameTest.TestAttributes
 {
     public class RatioCustomization : ICustomization
     {
