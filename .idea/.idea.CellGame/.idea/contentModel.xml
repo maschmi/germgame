@@ -14,7 +14,6 @@
         <e p="assembly.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="CellGame.csproj" t="IncludeRecursive" />
-        <e p="CellPrinter.cs" t="Include" />
         <e p="Germs" t="Include">
           <e p="DefaultGermFactory.cs" t="Include" />
           <e p="IGerm.cs" t="Include" />
@@ -37,6 +36,7 @@
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Tissue" t="Include">
+          <e p="CellStringEncoder.cs" t="Include" />
           <e p="DefaultCellFactory.cs" t="Include" />
           <e p="HealthyCell.cs" t="Include" />
           <e p="ICell.cs" t="Include" />
@@ -64,11 +64,16 @@
         </e>
         <e p="TestAttributes" t="Include">
           <e p="AutoMoqData.cs" t="Include" />
+          <e p="Max50Attribute.cs" t="Include" />
+          <e p="Max50Customization.cs" t="Include" />
           <e p="RatioAttribute.cs" t="Include" />
           <e p="RatioCustomization.cs" t="Include" />
+          <e p="Tissue2DCustomization.cs" t="Include" />
+          <e p="TissueCreationAttribute.cs" t="Include" />
         </e>
         <e p="Tissue" t="Include">
           <e p="Tissue2DFactoryTest.cs" t="Include" />
+          <e p="TissuePrinterTests.cs" t="Include" />
         </e>
         <e p="UnitTest1.cs" t="Include" />
       </e>

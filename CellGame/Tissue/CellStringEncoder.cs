@@ -5,9 +5,8 @@ using CellGame.Tissue;
 
 namespace CellGame
 {
-    internal class CellPrinter : ICellVisitor
+    public sealed class CellStringEncoder : ICellVisitor
     {
-
         private string _currentCellCode = string.Empty; 
         public void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
         {
@@ -17,7 +16,7 @@ namespace CellGame
                 _currentCellCode = "C";
         }
 
-        public string GetStringRepresentationOf(ICell cell)
+        public string GetEncodedCell(ICell cell)
         {
             _currentCellCode = string.Empty;
 

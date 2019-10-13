@@ -16,7 +16,7 @@ namespace CellGame
             var tissueMap = new Tissue2DFactory(cellFactory, germFactory, new FisherYatesShuffle()).
                 Create(maxX, maxY, 0.8f, 0.15f);
             
-            var printer = new TissuePrinter(tissueMap, new CellPrinter());
+            var printer = new TissuePrinter(tissueMap, new CellStringEncoder());
 
             printer.PrintTissue();
         }
