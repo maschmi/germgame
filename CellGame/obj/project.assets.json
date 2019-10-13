@@ -9,30 +9,34 @@
   },
   "packageFolders": {
     "C:\\Users\\martin\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj",
+      "projectUniqueName": "C:\\Users\\martin\\source\\repos\\germgame\\CellGame\\CellGame.csproj",
       "projectName": "CellGame",
-      "projectPath": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj",
+      "projectPath": "C:\\Users\\martin\\source\\repos\\germgame\\CellGame\\CellGame.csproj",
       "packagesPath": "C:\\Users\\martin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\obj\\",
+      "outputPath": "C:\\Users\\martin\\source\\repos\\germgame\\CellGame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
         "C:\\Users\\martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://dotnet.myget.org/F/roslyn/api/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.0": {

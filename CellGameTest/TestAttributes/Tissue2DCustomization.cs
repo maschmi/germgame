@@ -16,8 +16,8 @@ namespace CellGameTest.TestAttributes
         {
             fixture.Customize<Tissue2D>(c => c.FromFactory(() =>
             {
-                var maxX = _rnd.Next(0, 200);
-                var maxY = _rnd.Next(0, 200);
+                var maxX = _rnd.Next(1, 200);
+                var maxY = _rnd.Next(1, 200);
 
                 var locations = new List<Location>();
                 for (int y = 0; y < maxY; y++)

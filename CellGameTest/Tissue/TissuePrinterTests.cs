@@ -21,8 +21,8 @@ namespace CellGameTest.Tissue
         {
             var random = new Random();
             var fixture = new Fixture().Customize(new AutoMoqCustomization());
-            var maxX = random.Next(0,200);
-            var maxY = random.Next(0,200);
+            var maxX = random.Next(1,200);
+            var maxY = random.Next(1,200);
 
             var locations = new List<Location>();
             for(int y = 0; y < maxY; y++)
@@ -54,7 +54,8 @@ namespace CellGameTest.Tissue
         [AutoMoqData]
         public void PrintTissue_CellPrintIsCalled_CorrectNumberOfTimes2(
             [Frozen] ICell cell,
-            [TissueCreation] Tissue2D tissue,
+            //be sure to freeze it, otherwise a new tissue is created for parameters and stuff
+            [Frozen, TissueCreation] Tissue2D tissue, 
             TissuePrinter sut)
         {
             sut.PrintTissue();
@@ -64,7 +65,7 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void PrintTissue_CellPrintIsCalled_ForEachCell(
-            [TissueCreation] Tissue2D tissue,
+            [Frozen, TissueCreation] Tissue2D tissue,
             TissuePrinter sut)
         {
             sut.PrintTissue();

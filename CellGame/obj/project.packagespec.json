@@ -1,12 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj",
+    "projectUniqueName": "C:\\Users\\martin\\source\\repos\\germgame\\CellGame\\CellGame.csproj",
     "projectName": "CellGame",
-    "projectPath": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\CellGame.csproj",
-    "outputPath": "C:\\Users\\martin\\RiderProjects\\CellGame\\CellGame\\obj\\",
+    "projectPath": "C:\\Users\\martin\\source\\repos\\germgame\\CellGame\\CellGame.csproj",
+    "outputPath": "C:\\Users\\martin\\source\\repos\\germgame\\CellGame\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
+      "C:\\Microsoft\\Xamarin\\NuGet",
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
@@ -14,7 +15,8 @@
     ],
     "sources": {
       "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-      "https://api.nuget.org/v3/index.json": {}
+      "https://api.nuget.org/v3/index.json": {},
+      "https://dotnet.myget.org/F/roslyn/api/v3/index.json": {}
     },
     "frameworks": {
       "netcoreapp3.0": {
