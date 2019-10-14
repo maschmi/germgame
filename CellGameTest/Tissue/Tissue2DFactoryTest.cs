@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoFixture.Xunit2;
 using CellGame.Germs;
+using CellGame.Helper;
 using CellGame.ListShuffle;
 using CellGame.Tissue;
+using CellGameTest.Helper;
 using CellGameTest.TestAttributes;
 using FluentAssertions;
 using Moq;
@@ -23,6 +25,24 @@ namespace CellGameTest.Tissue
         {
             Tissue2D result = sut.Create(x, y, living, 1-living);
             result.Tissue.Count.Should().Be(x*y);
+        }
+        
+        [Theory]
+        [AutoMoqData]
+        public void Create_Tissue2D_WithCorrectLocationOrigin(int x, int y,
+            [Ratio]float living,
+            [Frozen(Matching.ImplementedInterfaces)]ReverseTestShuffler shuffler, //we need to make sure max Location is in but do not want to use a complex shuffler
+            Tissue2DFactory sut)
+        {
+            Tissue2D result = sut.Create(x, y, living, 1-living);
+            VerifyLocationBounds(x, y, result);
+        }
+
+        private static void VerifyLocationBounds(int x, int y, Tissue2D result)
+        {
+            result.Tissue.TryGetValue(new Location(0, 0), out _).Should().BeTrue();
+            result.Tissue.TryGetValue(new Location(x - 1, y - 1), out _).Should().BeTrue();
+            result.Tissue.TryGetValue(new Location(x, y), out _).Should().BeFalse();
         }
 
         [Theory]

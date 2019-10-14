@@ -34,8 +34,8 @@ namespace CellGame.Tissue
             int countHealthyCells = (int)Math.Floor(ratioHealthyCells * totalCount);
             int countInfectedCells = (int)Math.Floor(ratioInfectedCells * totalCount);
 
-            var xList = _shuffler.Shuffle(Enumerable.Range(0, maxX+1));
-            var yList = _shuffler.Shuffle(Enumerable.Range(0, maxY+1));
+            var xList = _shuffler.Shuffle(Enumerable.Range(0, maxX));
+            var yList = _shuffler.Shuffle(Enumerable.Range(0, maxY));
             var cells = new List<ICell>();
             cells.AddRange(CreateHealthyCells(countHealthyCells));
             cells.AddRange(CreateInfectedCells(countInfectedCells));
