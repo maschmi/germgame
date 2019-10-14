@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Collections.Generic;
 using AutoFixture.Xunit2;
 using CellGame.ListShuffle;
 using CellGame.Tissue;
-using CellGameTest.TestAttributes;
 using FluentAssertions;
 using Xunit;
 
