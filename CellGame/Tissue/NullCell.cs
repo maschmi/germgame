@@ -9,7 +9,7 @@
 
         public void Accept(ICellVisitor cellVisitor)
         {
-            //do nothing, this is empty place/cell
+            cellVisitor.Visit(false,0,0,false);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Text;
 using CellGame.Tissue;
 
@@ -10,7 +11,9 @@ namespace CellGame
         private string _currentCellCode = string.Empty; 
         public void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
         {
-            if (isInfected)
+            if (!isAlive)
+                _currentCellCode = "X";
+            else if (isInfected)
                 _currentCellCode = "I";
             else
                 _currentCellCode = "C";
@@ -23,8 +26,8 @@ namespace CellGame
             if (cell != null)
                 cell.Accept(this);
             else
-                return ("X");
-
+                _currentCellCode = "E";
+            
             return _currentCellCode;
         }
     }
