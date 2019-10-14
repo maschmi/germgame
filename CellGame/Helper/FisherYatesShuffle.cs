@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CellGame.ListShuffle
 {
-    internal class FisherYatesShuffle : IShuffle
+    public class FisherYatesShuffle : IShuffle
     {
         public IEnumerable<T> Shuffle<T>(in IEnumerable<T> input)
         {
