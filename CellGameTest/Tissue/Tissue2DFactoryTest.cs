@@ -68,8 +68,8 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void Create_Tissue2D_AllPositionsAreCreated(
-            [Max50] int x, 
-            [Max50] int y,
+            [MinMaxInt(0,50)] int x, 
+            [MinMaxInt(0,50)] int y,
             [Ratio] float variableRatio,
             [Frozen(Matching.ImplementedInterfaces)] NullShuffle shuffler, //do not shuffle but inject when generating sut
             Tissue2DFactory sut)

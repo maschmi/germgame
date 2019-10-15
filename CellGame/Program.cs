@@ -17,7 +17,7 @@ namespace CellGame
                 .Create(maxX, maxY, 0.8f, 0.15f);
             
             var printer = new TissuePrinter(tissueMap, new CellStringEncoder());
-
+            
             printer.PrintTissue();
         }
     }

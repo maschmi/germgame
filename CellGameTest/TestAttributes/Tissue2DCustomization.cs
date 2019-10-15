@@ -10,14 +10,19 @@ namespace CellGameTest.TestAttributes
 {
     public class Tissue2DCustomization : ICustomization
     {
-        private Random _rnd = new Random();
-        
+        private readonly Random _rnd = new Random();
+        private readonly int _maxValue;
+
+        public Tissue2DCustomization(int maxValue)
+        {
+            _maxValue = maxValue;
+        }
         public void Customize(IFixture fixture)
         {
             fixture.Customize<Tissue2D>(c => c.FromFactory(() =>
             {
-                var maxX = _rnd.Next(1, 200);
-                var maxY = _rnd.Next(1, 200);
+                var maxX = _rnd.Next(1, _maxValue);
+                var maxY = _rnd.Next(1, _maxValue);
 
                 var locations = new List<Location>();
                 for (int y = 0; y < maxY; y++)

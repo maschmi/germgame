@@ -65,7 +65,7 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void PrintTissue_CellPrintIsCalled_ForEachCell(
-            [Frozen, TissueCreation] Tissue2D tissue,
+            [Frozen, TissueCreation(50)] Tissue2D tissue,
             TissuePrinter sut)
         {
             sut.PrintTissue();

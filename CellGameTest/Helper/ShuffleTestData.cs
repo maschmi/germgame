@@ -13,10 +13,10 @@ namespace CellGameTest.Helper
         public static IEnumerable<object[]> IntTestList =>
             new List<object[]>
             {
-                new object[] {_fixture.CreateMany<int>(250)}
+                new object[] {_fixture.CreateMany<int>(50)}
             };
         public static IEnumerable<object[]> LocationTestList =>
-            new List<object[]> {new object[] {_fixture.CreateMany<Location>(250)}};
+            new List<object[]> {new object[] {_fixture.CreateMany<Location>(50)}};
     }
 
     internal class OnlyUnsignedIntegersCustomization : ICustomization
