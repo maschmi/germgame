@@ -55,7 +55,7 @@ namespace CellGameTest.Tissue
         public void PrintTissue_CellPrintIsCalled_CorrectNumberOfTimes2(
             [Frozen] ICell cell,
             //be sure to freeze it, otherwise a new tissue is created for parameters and stuff
-            [Frozen, TissueCreation] Tissue2D tissue, 
+            [Frozen, MockCellTissueCreation] Tissue2D tissue, 
             TissuePrinter sut)
         {
             sut.PrintTissue();
@@ -65,7 +65,7 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void PrintTissue_CellPrintIsCalled_ForEachCell(
-            [Frozen, TissueCreation(50)] Tissue2D tissue,
+            [Frozen, MockCellTissueCreation(50)] Tissue2D tissue,
             TissuePrinter sut)
         {
             sut.PrintTissue();

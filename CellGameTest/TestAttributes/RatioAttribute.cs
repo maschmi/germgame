@@ -5,7 +5,7 @@ using AutoFixture.Xunit2;
 
 namespace CellGameTest.TestAttributes
 {
-    public class RatioAttribute : CustomizeAttribute
+    public class FloatAsRatioAttribute : CustomizeAttribute
     {
         public override ICustomization GetCustomization(ParameterInfo parameter)
         {

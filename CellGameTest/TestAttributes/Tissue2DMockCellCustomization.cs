@@ -8,12 +8,12 @@ using FluentAssertions;
 
 namespace CellGameTest.TestAttributes
 {
-    public class Tissue2DCustomization : ICustomization
+    public class Tissue2DMockCellCustomization : ICustomization
     {
         private readonly Random _rnd = new Random();
         private readonly int _maxValue;
 
-        public Tissue2DCustomization(int maxValue)
+        public Tissue2DMockCellCustomization(int maxValue)
         {
             _maxValue = maxValue;
         }

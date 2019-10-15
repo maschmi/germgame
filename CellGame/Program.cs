@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using CellGame.Germs;
 using CellGame.ListShuffle;
+using CellGame.RunGame;
 using CellGame.Tissue;
 
 namespace CellGame
@@ -14,11 +15,17 @@ namespace CellGame
             var cellFactory = new DefaultCellFactory();
             var germFactory = new DefaultGermFactory();
             var tissueMap = new Tissue2DFactory(cellFactory, germFactory, new FisherYatesShuffle())
-                .Create(maxX, maxY, 0.8f, 0.15f);
+                .Create(maxX, maxY, 0.7f, 0.05f);
+            var cellStringEncoder = new CellStringEncoder();
+            var roundBasedGame = new RoundBasedGame();
             
-            var printer = new TissuePrinter(tissueMap, new CellStringEncoder());
+            var printerRoundOne = new TissuePrinter(tissueMap, cellStringEncoder);
+
+            tissueMap = roundBasedGame.Advance(tissueMap);
+            var printerRoundTwo = new TissuePrinter(tissueMap, cellStringEncoder);
             
-            printer.PrintTissue();
+            printerRoundOne.PrintTissue();
+            printerRoundTwo.PrintTissue();
         }
     }
 }

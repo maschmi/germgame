@@ -19,7 +19,7 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void Create_Tissue2D_WithCorrectNumberOfCells(int x, int y,
-            [Ratio]float living,
+            [FloatAsRatio]float living,
             [Frozen(Matching.ImplementedInterfaces)]NullShuffle shuffler,
             Tissue2DFactory sut)
         {
@@ -30,7 +30,7 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void Create_Tissue2D_WithCorrectLocationOrigin(int x, int y,
-            [Ratio]float living,
+            [FloatAsRatio]float living,
             [Frozen(Matching.ImplementedInterfaces)]ReverseTestShuffler shuffler, //we need to make sure max Location is in but do not want to use a complex shuffler
             Tissue2DFactory sut)
         {
@@ -48,7 +48,7 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void Create_Tissue2D_CorrectCellsRatiosAreCreated(int x, int y,
-            [Ratio] float variableRatio,
+            [FloatAsRatio] float variableRatio,
             [Frozen(Matching.ImplementedInterfaces)] NullShuffle shuffler, //do not shuffle but inject when generating sut
             [Frozen] ICellFactory cellFactory,
             Tissue2DFactory sut)
@@ -70,7 +70,7 @@ namespace CellGameTest.Tissue
         public void Create_Tissue2D_AllPositionsAreCreated(
             [MinMaxInt(0,50)] int x, 
             [MinMaxInt(0,50)] int y,
-            [Ratio] float variableRatio,
+            [FloatAsRatio] float variableRatio,
             [Frozen(Matching.ImplementedInterfaces)] NullShuffle shuffler, //do not shuffle but inject when generating sut
             Tissue2DFactory sut)
         {

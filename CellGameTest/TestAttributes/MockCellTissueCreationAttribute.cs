@@ -5,11 +5,11 @@ using AutoFixture.Xunit2;
 
 namespace CellGameTest.TestAttributes
 {
-    public class TissueCreationAttribute : CustomizeAttribute
+    public class MockCellTissueCreationAttribute : CustomizeAttribute
     {
         private readonly int _maxValue;
 
-        public TissueCreationAttribute(int maxValue = 200)
+        public MockCellTissueCreationAttribute(int maxValue = 200)
         {
             _maxValue = maxValue;
         }
@@ -17,7 +17,7 @@ namespace CellGameTest.TestAttributes
         { 
             if (parameter == null) throw new ArgumentNullException(nameof(parameter));
             
-            return new Tissue2DCustomization(_maxValue);
+            return new Tissue2DMockCellCustomization(_maxValue);
         }
     }
 }
