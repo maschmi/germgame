@@ -7,15 +7,25 @@ namespace CellGame.Germs
     {
         private ICell _healthyCellToReturn;
         
-        public void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
+        public void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
         {
             _healthyCellToReturn = new HealthyCell();
         }
 
-        public ICell InfectCell(ICell healthyCellToInfect)
+        public ICell InfectCell(ICell cellToInfect)
         {
-            healthyCellToInfect.Accept(this);
+            cellToInfect.Accept(this);
             return _healthyCellToReturn;
+        }
+
+        public void Accept(IGermVisitor visitor)
+        {
+            //do nothing. this is a null implementation
+        }
+
+        public IGerm Clone()
+        {
+            return new  NullGerm();
         }
     }
 }

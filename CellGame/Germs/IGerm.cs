@@ -4,6 +4,8 @@ namespace CellGame.Germs
 {
     public interface IGerm : ICellVisitor
     {
-        ICell InfectCell(ICell healthyCellToInfect);
+        ICell InfectCell(ICell cellToInfect);
+        void Accept(IGermVisitor visitor);
+        IGerm Clone();
     }
 }

@@ -9,7 +9,7 @@ namespace CellGame
     public sealed class CellStringEncoder : ICellVisitor
     {
         private string _currentCellCode = string.Empty; 
-        public void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
+        public void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
         {
             if (!isAlive)
                 _currentCellCode = "X";

@@ -36,7 +36,7 @@ namespace CellGame.Tissue
 
         public void Accept(ICellVisitor cellVisitor)
         {
-            cellVisitor.Visit(_isAlive, _selfSignal, _alertSignal, _isInfected);
+            cellVisitor.VisitCell(_isAlive, _selfSignal, _alertSignal, _isInfected);
         }
     }
 }

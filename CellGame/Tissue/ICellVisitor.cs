@@ -2,6 +2,6 @@
 {
     public interface ICellVisitor
     {
-        void Visit(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected);
+        void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected);
     }
 }
