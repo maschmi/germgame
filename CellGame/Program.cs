@@ -17,7 +17,7 @@ namespace CellGame
             var tissueMap = new Tissue2DFactory(cellFactory, germFactory, new FisherYatesShuffle())
                 .Create(maxX, maxY, 0.7f, 0.05f);
             var cellStringEncoder = new CellStringEncoder();
-            var roundBasedGame = new RoundBasedGame();
+            var roundBasedGame = new RoundBasedGame(new TissueGrowthMechanism(), new NullInfectionPropagation());
             
             var printerRoundOne = new TissuePrinter(tissueMap, cellStringEncoder);
 

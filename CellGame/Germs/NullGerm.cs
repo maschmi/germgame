@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using CellGame.Tissue;
 
 namespace CellGame.Germs
 {
     internal sealed class NullGerm : IGerm
     {
+        public event EventHandler<GermGrowthEventArgs> GermGrowth;
+        
         private ICell _healthyCellToReturn;
         
         public void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
@@ -23,7 +26,7 @@ namespace CellGame.Germs
             //do nothing. this is a null implementation
         }
 
-        public IGerm Clone()
+        public IGerm Replicate()
         {
             return new  NullGerm();
         }

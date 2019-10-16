@@ -11,7 +11,6 @@ namespace CellGame.Tissue
         private readonly ushort _alertSignal;
         private readonly IGerm _germ;
 
-
         public InfectedCell(bool isAlive, ushort selfSignal, ushort alertSignal, IGerm germ)
         {
             _isAlive = isAlive;
@@ -24,7 +23,7 @@ namespace CellGame.Tissue
         {
             IGerm nextGenGerm = new NullGerm();
             if(_isAlive)
-                 nextGenGerm = _germ.Clone();
+                 nextGenGerm = _germ.Replicate();
             
             return new InfectedCell(_isAlive, _selfSignal, _alertSignal, nextGenGerm);
         }
@@ -33,6 +32,7 @@ namespace CellGame.Tissue
         {
             cellVisitor.VisitCell(_isAlive, _selfSignal, _alertSignal, _isInfected);
         }
+        
     }
 }
  

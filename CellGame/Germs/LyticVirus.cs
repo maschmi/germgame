@@ -6,6 +6,8 @@ namespace CellGame.Germs
 {
     public class LyticVirus : IGerm
     {
+        public event EventHandler<GermGrowthEventArgs> GermGrowth;
+        
         private const int GenerationsToMature = 10;
         private readonly int _generation;
         private readonly bool  _isMature;
@@ -31,7 +33,7 @@ namespace CellGame.Germs
             _canInfectCell = isAlive && !isInfected;
             _originCellSignals = (selfSignal, alertSignal);
         }
-        
+
         public ICell InfectCell(ICell cellToInfect)
         {
             cellToInfect.Accept(this);
@@ -49,7 +51,7 @@ namespace CellGame.Germs
             visitor.Visit(_isMature, _replicationMultiplier);
         }
 
-        public IGerm Clone()
+        public IGerm Replicate()
         {
             return new LyticVirus(_generation+1);
         }

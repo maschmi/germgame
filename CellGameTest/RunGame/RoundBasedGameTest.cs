@@ -1,4 +1,6 @@
 using System.Linq;
+using AutoFixture;
+using AutoFixture.Xunit2;
 using CellGame.RunGame;
 using CellGame.Tissue;
 using CellGameTest.TestAttributes;
@@ -12,7 +14,7 @@ namespace CellGameTest.RunGame
     {
         [Theory]
         [AutoMoqData]
-        public void Advance_DoesNotReturnSameTissue2DInstanceAndCellsAreCloned(
+        internal void Advance_DoesNotReturnSameTissue2DInstanceAndCellsAreCloned(
             [MockCellTissueCreation(10)]Tissue2D input,
             RoundBasedGame sut)
         {
@@ -21,10 +23,12 @@ namespace CellGameTest.RunGame
             VerifyNotSameInstance(input, result);
             VerifyInputCellsAreCloned(input);
         }
+        
         [Theory]
         [AutoMoqData]
-        public void Advance_TBA(
+        internal void Advance_TissueGrows_NullCellsGetReduced(
             [TissueCreationFromFactory(10)]Tissue2D input,
+            [Frozen(Matching.ImplementedInterfaces)]TissueGrowthMechanism growth,
             RoundBasedGame sut)
         {
             var result = sut.Advance(input);

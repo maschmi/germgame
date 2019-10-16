@@ -23,8 +23,9 @@ namespace CellGameTest.TestAttributes
                     fixture.Inject<ICellFactory>(new DefaultCellFactory());
                     fixture.Inject<IShuffle>(item: new NullShuffle());
                     var ratioSeed = (float) _rnd.NextDouble();
-                    var healthyCells = ratioSeed / 2;
+                    var nullCells = ratioSeed / 5;
                     var infectedCells = ratioSeed / 3;
+                    var healthyCells = 1 - nullCells - infectedCells;
                     var maxX = _rnd.Next(1, _max);
                     var maxY = _rnd.Next(1, _max);
                     var tissueFactory = fixture.Create<Tissue2DFactory>();

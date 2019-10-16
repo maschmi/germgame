@@ -4,9 +4,16 @@ using CellGame.Tissue;
 
 namespace CellGame.RunGame
 {
-    public class RoundBasedGame : IRunGame
+    internal sealed class RoundBasedGame : IRunGame
     {
-        private Random _rnd = new Random();
+        private readonly IGrowTissue _growthMechanism;
+        private readonly IPropagateInfection _infectionPropagation;
+
+        public RoundBasedGame(IGrowTissue growthMechanism, IPropagateInfection infectionPropagation)
+        {
+            _growthMechanism = growthMechanism ?? throw new ArgumentException(nameof(growthMechanism)); 
+            _infectionPropagation = infectionPropagation ?? throw new ArgumentException(nameof(infectionPropagation));
+        }
         
         public Tissue2D Advance(Tissue2D input)
         {
@@ -15,7 +22,8 @@ namespace CellGame.RunGame
             {
                 result = cell switch
                 {
-                    NullCell _ => result.Add(location, GetRandomNeighbour(input, location).Clone()),
+                    NullCell _ => result.Add(location, GrowTissue(input,location)),
+                    InfectedCell infectedCell => result.Add(location, PropagateInfection(location, infectedCell)),
                     _ => result.Add(location, cell.Clone())
                 };
             }
@@ -23,32 +31,12 @@ namespace CellGame.RunGame
             return new Tissue2D(result);
         }
 
-        private ICell GetRandomNeighbour(Tissue2D input, Location currentLocation)
-        {
-            var maxTries = 10;
-            for (int i = 0; i < maxTries; i++)
-            {
-                int rndY = ConvertToOffset(_rnd.Next(0, 2));
-                int rndX = ConvertToOffset(_rnd.Next(0, 2));
-                var pickLocation = new Location(currentLocation.X - rndX, currentLocation.Y - rndY);
-                if (input.Tissue.TryGetValue(pickLocation, out ICell neigbour))
-                    return neigbour;
-            }
-            
-            return new NullCell();
-        }
+        private ICell GrowTissue(Tissue2D input, Location location)
+            => _growthMechanism.GrowTissue(input, location);
 
-        private int ConvertToOffset(int next)
-        {
-            if (next == 0)
-                return -1;
 
-            return next;
-        }
-    }
+        private ICell PropagateInfection(Location location, InfectedCell infectedCell)
+            => _infectionPropagation.PropagateInfection(infectedCell);
 
-    public interface IRunGame
-    {
-        Tissue2D Advance(Tissue2D input);
     }
 }
