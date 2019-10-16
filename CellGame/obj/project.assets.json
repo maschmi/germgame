@@ -20,7 +20,7 @@
       "outputPath": "/home/martin/RiderProjects/germgame/CellGame/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/martin/.nuget/NuGet/NuGet.Config"
+        "/home/martin/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.0"
@@ -50,13 +50,7 @@
           "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          }
-        },
-        "runtimeIdentifierGraphPath": "/opt/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }

@@ -2226,6 +2226,12 @@
           "build/netcoreapp1.0/xunit.runner.visualstudio.props": {}
         }
       },
+      "XunitXml.TestLogger/2.1.26": {
+        "type": "package",
+        "build": {
+          "build/netstandard1.0/XunitXml.TestLogger.props": {}
+        }
+      },
       "CellGame/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.0",
@@ -7354,6 +7360,21 @@
         "xunit.runner.visualstudio.nuspec"
       ]
     },
+    "XunitXml.TestLogger/2.1.26": {
+      "sha512": "jPP+0SR33SK2rAnkbzx3DnltwiTrCbWcDBPWNDoKfW1SLT+Wq/YJlGGNkjpkNkU5VqhgfIuqhyWPAgYM4iMOow==",
+      "type": "package",
+      "path": "xunitxml.testlogger/2.1.26",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.Extension.Xunit.Xml.TestAdapter.dll",
+        "build/_common/Microsoft.VisualStudio.TestPlatform.Extension.Xunit.Xml.TestLogger.dll",
+        "build/net45/XunitXml.TestLogger.props",
+        "build/netstandard1.0/XunitXml.TestLogger.props",
+        "xunitxml.testlogger.2.1.26.nupkg.sha512",
+        "xunitxml.testlogger.nuspec"
+      ]
+    },
     "CellGame/1.0.0": {
       "type": "project",
       "path": "../CellGame/CellGame.csproj",
@@ -7369,6 +7390,7 @@
       "FluentAssertions >= 5.9.0",
       "Microsoft.NET.Test.Sdk >= 16.2.0",
       "Moq >= 4.13.0",
+      "XunitXml.TestLogger >= 2.1.26",
       "coverlet.collector >= 1.0.1",
       "xunit >= 2.4.0",
       "xunit.runner.visualstudio >= 2.4.0"
@@ -7436,6 +7458,10 @@
           "Moq": {
             "target": "Package",
             "version": "[4.13.0, )"
+          },
+          "XunitXml.TestLogger": {
+            "target": "Package",
+            "version": "[2.1.26, )"
           },
           "coverlet.collector": {
             "target": "Package",

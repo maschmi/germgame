@@ -108,6 +108,10 @@
               "target": "Package",
               "version": "[4.13.0, )"
             },
+            "XunitXml.TestLogger": {
+              "target": "Package",
+              "version": "[2.1.26, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[1.0.1, )"
