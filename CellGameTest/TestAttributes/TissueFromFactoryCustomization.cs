@@ -1,6 +1,6 @@
 using System;
 using AutoFixture;
-using CellGame.ListShuffle;
+using CellGame.Helper.Shuffle;
 using CellGame.Tissue;
 
 namespace CellGameTest.TestAttributes

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CellGame.ListShuffle
+namespace CellGame.Helper.Shuffle
 {
     public class FisherYatesShuffle : IShuffle
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoFixture.Xunit2;
-using CellGame.ListShuffle;
+using CellGame.Helper.Shuffle;
 using CellGame.Tissue;
 using FluentAssertions;
 using Xunit;

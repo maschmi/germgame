@@ -1,7 +1,6 @@
 using System.Reflection;
 using AutoFixture;
 using AutoFixture.Xunit2;
-using CellGameTest.RunGame;
 
 namespace CellGameTest.TestAttributes
 {

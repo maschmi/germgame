@@ -1,6 +1,6 @@
 namespace CellGame.Germs
 {
-    internal class DefaultGermFactory : IGermFactory
+    internal class NullGermFactory : IGermFactory
     {
         public IGerm CreateDefaultGerm()
         {

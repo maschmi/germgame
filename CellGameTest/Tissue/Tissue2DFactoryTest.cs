@@ -4,7 +4,7 @@ using System.Linq;
 using AutoFixture.Xunit2;
 using CellGame.Germs;
 using CellGame.Helper;
-using CellGame.ListShuffle;
+using CellGame.Helper.Shuffle;
 using CellGame.Tissue;
 using CellGameTest.Helper;
 using CellGameTest.TestAttributes;

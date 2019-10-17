@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CellGame.ListShuffle;
 
-namespace CellGame.Helper
+namespace CellGame.Helper.Shuffle
 {
     public class ReverseTestShuffler : IShuffle
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using CellGame.Germs;
-using CellGame.ListShuffle;
+using CellGame.Helper.Shuffle;
 
 namespace CellGame.Tissue
 {

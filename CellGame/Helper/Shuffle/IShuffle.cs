@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CellGame.ListShuffle
+namespace CellGame.Helper.Shuffle
 {
     public interface IShuffle
     {

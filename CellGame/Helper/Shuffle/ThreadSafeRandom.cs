@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace CellGame.ListShuffle
+namespace CellGame.Helper.Shuffle
 {
     internal static class ThreadSafeRandom
     {

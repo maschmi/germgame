@@ -6,7 +6,6 @@ namespace CellGame.Germs
 {
     internal sealed class NullGerm : IGerm
     {
-        public event EventHandler<GermGrowthEventArgs> GermGrowth;
         
         private ICell _healthyCellToReturn;
         
@@ -21,14 +20,9 @@ namespace CellGame.Germs
             return _healthyCellToReturn;
         }
 
-        public void Accept(IGermVisitor visitor)
-        {
-            //do nothing. this is a null implementation
-        }
-
         public IGerm Replicate()
         {
-            return new  NullGerm();
+            return new NullGerm();
         }
     }
 }

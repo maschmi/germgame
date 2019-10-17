@@ -1,33 +1,44 @@
 using System;
 using System.Runtime.InteropServices;
+using CellGame.Helper;
 using CellGame.Tissue;
 
 namespace CellGame.Germs
 {
-    public class LyticVirus : IGerm
+    internal class LyticVirus : IGerm
     {
-        public event EventHandler<GermGrowthEventArgs> GermGrowth;
+        private const bool IsLytic = true;
+        private const bool IsBudding = false;
+        private const int GenerationsToMature = 2;
+        private const int ReplicationMultiplier = 10;
         
-        private const int GenerationsToMature = 10;
         private readonly int _generation;
-        private readonly bool  _isMature;
-        private readonly int _replicationMultiplier = 10;
+        private readonly bool _isMature;
         
         private bool _canInfectCell = false;
         private (ushort selfSignal, ushort alertSignal) _originCellSignals;
+        private readonly IEventAggregator _eventAggregator;
 
-        public LyticVirus()
+        public LyticVirus(IEventAggregator eventAggregator)
         {
             _generation = 0;
             _isMature = false;
+            _eventAggregator = eventAggregator ?? throw new ArgumentNullException(nameof(eventAggregator));
         }
 
-        internal LyticVirus(int currentGeneration)
+        internal LyticVirus(int currentGeneration, IEventAggregator eventAggregator)
         {
             _generation = currentGeneration;
+            _eventAggregator = eventAggregator ?? throw new ArgumentNullException(nameof(eventAggregator));
             _isMature = _generation >= GenerationsToMature;
         }
-        
+
+        private void PublishGermGowth()
+        {
+            _eventAggregator.Publish(
+                new GermGrowthMessage(IsLytic, IsBudding, ReplicationMultiplier, this));
+        }
+
         public void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
         {
             _canInfectCell = isAlive && !isInfected;
@@ -45,20 +56,18 @@ namespace CellGame.Germs
             
             return cellToInfect;
         }
-
-        public void Accept(IGermVisitor visitor)
-        {
-            visitor.Visit(_isMature, _replicationMultiplier);
-        }
-
+        
         public IGerm Replicate()
         {
-            return new LyticVirus(_generation+1);
+            if (_isMature)
+                PublishGermGowth();
+            
+            return new LyticVirus(_generation + 1, _eventAggregator);
         }
 
         private IGerm NewInfection()
         {
-            return new LyticVirus(0);
+            return new LyticVirus(_eventAggregator);
         }
     }
 }
