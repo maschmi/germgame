@@ -9,7 +9,6 @@ namespace CellGameTest.TestAttributes
         public AutoMoqData()
             : base(() => new Fixture().Customize(new AutoMoqCustomization()))
         {
-            
         }
     }
 }

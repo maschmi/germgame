@@ -8,7 +8,8 @@ namespace CellGame
 {
     public sealed class CellStringEncoder : ICellVisitor
     {
-        private string _currentCellCode = string.Empty; 
+        private string _currentCellCode = string.Empty;
+
         public void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
         {
             if (!isAlive)
@@ -27,7 +28,7 @@ namespace CellGame
                 cell.Accept(this);
             else
                 _currentCellCode = "E";
-            
+
             return _currentCellCode;
         }
     }

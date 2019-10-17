@@ -31,21 +31,20 @@ namespace CellGame.Tissue
             CreateOutput(_tissue.Tissue);
             Console.WriteLine(_buffer.ToString());
         }
-        
+
         public void CreateOutput(ImmutableDictionary<Location, ICell> tissue)
         {
             for (int y = 0; y <= _maxY; y++)
             {
                 for (int x = 0; x <= _maxX; x++)
                 {
-                    var currentLocation = new Location(x,y);
+                    var currentLocation = new Location(x, y);
                     var cell = tissue[currentLocation];
                     _buffer.Append(_cellStringEncoder.GetEncodedCell(cell));
                 }
 
                 _buffer.AppendLine();
             }
-            
         }
     }
 }

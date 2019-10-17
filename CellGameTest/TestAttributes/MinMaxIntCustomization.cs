@@ -15,7 +15,7 @@ namespace CellGameTest.TestAttributes
             _maxInt = maxInt + 1;
             _minInt = minInt;
         }
-        
+
         public void Customize(IFixture fixture)
         {
             fixture.Customize<int>(c => c.FromFactory<uint>(i => _rnd.Next(_minInt, _maxInt)));

@@ -15,11 +15,12 @@ namespace CellGameTest.TestAttributes
             _maxInt = maxInt;
             _minInt = minInt;
         }
+
         public override ICustomization GetCustomization(ParameterInfo parameter)
         {
             if (parameter == null) throw new ArgumentNullException(nameof(parameter));
-            
-            return new MinMaxIntCustomization(_minInt,_maxInt);
+
+            return new MinMaxIntCustomization(_minInt, _maxInt);
         }
     }
 }

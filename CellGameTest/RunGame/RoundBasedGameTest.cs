@@ -15,24 +15,25 @@ namespace CellGameTest.RunGame
         [Theory]
         [AutoMoqData]
         internal void Advance_DoesNotReturnSameTissue2DInstanceAndCellsAreCloned(
-            [MockCellTissueCreation(10)]Tissue2D input,
+            [MockCellTissueCreation(10)] Tissue2D input,
             RoundBasedGame sut)
         {
             var result = sut.Advance(input);
-            
+
             VerifyNotSameInstance(input, result);
             VerifyInputCellsAreCloned(input);
         }
-        
+
         [Theory]
         [AutoMoqData]
         internal void Advance_TissueGrows_NullCellsGetReduced(
-            [TissueCreationFromFactory(10)]Tissue2D input,
-            [Frozen(Matching.ImplementedInterfaces)]TissueGrowthMechanism growth,
+            [TissueCreationFromFactory(10)] Tissue2D input,
+            [Frozen(Matching.ImplementedInterfaces)]
+            TissueGrowthMechanism growth,
             RoundBasedGame sut)
         {
             var result = sut.Advance(input);
-            
+
             VerifyNotSameInstance(input, result);
             VerifyLessNullCellsPresent(input, result);
         }
@@ -46,10 +47,7 @@ namespace CellGameTest.RunGame
 
         private static void VerifyInputCellsAreCloned(Tissue2D input)
         {
-            foreach (var cell in input.Tissue.Values)
-            {
-                Mock.Get(cell).Verify(c => c.Clone(), Times.Once);
-            }
+            foreach (var cell in input.Tissue.Values) Mock.Get(cell).Verify(c => c.Clone(), Times.Once);
         }
 
         private static void VerifyNotSameInstance(Tissue2D input, Tissue2D result)

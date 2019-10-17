@@ -21,8 +21,8 @@ namespace CellGameTest.TestAttributes
                 c.FromFactory(() =>
                 {
                     fixture.Inject<ICellFactory>(new DefaultCellFactory());
-                    fixture.Inject<IShuffle>(item: new NullShuffle());
-                    var ratioSeed = (float) _rnd.NextDouble();
+                    fixture.Inject<IShuffle>(new NullShuffle());
+                    var ratioSeed = (float)_rnd.NextDouble();
                     var nullCells = ratioSeed / 5;
                     var infectedCells = ratioSeed / 3;
                     var healthyCells = 1 - nullCells - infectedCells;

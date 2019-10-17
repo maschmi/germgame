@@ -6,7 +6,8 @@ namespace CellGame.RunGame
     internal sealed class TissueGrowthMechanism : IGrowTissue
     {
         private Random _rnd = new Random();
-        public ICell GrowTissue(Tissue2D input, Location location) 
+
+        public ICell GrowTissue(Tissue2D input, Location location)
             => GetRandomNeighbour(input, location).Clone();
 
         private ICell GetRandomNeighbour(Tissue2D input, Location currentLocation)
@@ -20,7 +21,7 @@ namespace CellGame.RunGame
                 if (input.Tissue.TryGetValue(pickLocation, out ICell neigbour))
                     return neigbour;
             }
-            
+
             return new NullCell();
         }
 

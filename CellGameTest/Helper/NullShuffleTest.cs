@@ -11,7 +11,7 @@ namespace CellGameTest.Helper
     {
         public static IEnumerable<object[]> IntTestList = ShuffleTestData.IntTestList;
         public static IEnumerable<object[]> LocationTestList = ShuffleTestData.LocationTestList;
-        
+
         [Theory]
         [MemberAutoData(nameof(IntTestList))]
         public void NullShuffle_Int_DoesNotShuffle(
@@ -20,7 +20,7 @@ namespace CellGameTest.Helper
             var result = sut.Shuffle(input);
             VerifyResultIsNotShuffled(input, result);
         }
-        
+
         [Theory]
         [MemberAutoData(nameof(LocationTestList))]
         public void NullShuffle_Location_DoesNotShuffle(
@@ -29,7 +29,7 @@ namespace CellGameTest.Helper
             var result = sut.Shuffle(input);
             VerifyResultIsNotShuffled(input, result);
         }
-        
+
         private static void VerifyResultIsNotShuffled<T>(IEnumerable<T> input, IEnumerable<T> result)
         {
             result.Should().BeEquivalentTo(input, o => o.WithStrictOrdering());

@@ -11,10 +11,10 @@ namespace CellGame.Germs
         private const bool IsBudding = false;
         private const int GenerationsToMature = 2;
         private const int ReplicationMultiplier = 10;
-        
+
         private readonly int _generation;
         private readonly bool _isMature;
-        
+
         private bool _canInfectCell = false;
         private (ushort selfSignal, ushort alertSignal) _originCellSignals;
         private readonly IEventAggregator _eventAggregator;
@@ -49,19 +49,20 @@ namespace CellGame.Germs
         {
             cellToInfect.Accept(this);
             if (cellToInfect is HealthyCell cell && _canInfectCell)
-                    return new InfectedCell(true,
-                        (ushort)Math.Floor(_originCellSignals.selfSignal * 0.7),
-                        (ushort)(_originCellSignals.alertSignal + (ushort) Math.Floor((ushort.MaxValue - _originCellSignals.alertSignal) * 0.2)),
-                        NewInfection());
-            
+                return new InfectedCell(true,
+                    (ushort)Math.Floor(_originCellSignals.selfSignal * 0.7),
+                    (ushort)(_originCellSignals.alertSignal +
+                             (ushort)Math.Floor((ushort.MaxValue - _originCellSignals.alertSignal) * 0.2)),
+                    NewInfection());
+
             return cellToInfect;
         }
-        
+
         public IGerm Replicate()
         {
             if (_isMature)
                 PublishGermGowth();
-            
+
             return new LyticVirus(_generation + 1, _eventAggregator);
         }
 

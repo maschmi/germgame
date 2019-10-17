@@ -9,12 +9,10 @@ namespace CellGameTest.Helper
     public class ShuffleTestData
     {
         private static readonly IFixture _fixture = new Fixture().Customize(new OnlyUnsignedIntegersCustomization());
-        
+
         public static IEnumerable<object[]> IntTestList =>
-            new List<object[]>
-            {
-                new object[] {_fixture.CreateMany<int>(50)}
-            };
+            new List<object[]> {new object[] {_fixture.CreateMany<int>(50)}};
+
         public static IEnumerable<object[]> LocationTestList =>
             new List<object[]> {new object[] {_fixture.CreateMany<Location>(50)}};
     }

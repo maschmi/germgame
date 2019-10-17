@@ -10,7 +10,7 @@ namespace CellGameTest.TestAttributes
         public override ICustomization GetCustomization(ParameterInfo parameter)
         {
             if (parameter == null) throw new ArgumentNullException(nameof(parameter));
-            
+
             return new RatioCustomization();
         }
     }

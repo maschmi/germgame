@@ -18,7 +18,5 @@ namespace CellGame.Germs
             ReplicationMultiplier = replicationMultiplier;
             Germ = germ ?? throw new ArgumentNullException(nameof(germ));
         }
-
-        
     }
 }

@@ -19,22 +19,24 @@ namespace CellGameTest.Tissue
         [Theory]
         [AutoMoqData]
         public void Create_Tissue2D_WithCorrectNumberOfCells(int x, int y,
-            [FloatAsRatio]float living,
-            [Frozen(Matching.ImplementedInterfaces)]NullShuffle shuffler,
+            [FloatAsRatio] float living,
+            [Frozen(Matching.ImplementedInterfaces)]
+            NullShuffle shuffler,
             Tissue2DFactory sut)
         {
-            Tissue2D result = sut.Create(x, y, living, 1-living);
-            result.Tissue.Count.Should().Be(x*y);
+            Tissue2D result = sut.Create(x, y, living, 1 - living);
+            result.Tissue.Count.Should().Be(x * y);
         }
-        
+
         [Theory]
         [AutoMoqData]
         public void Create_Tissue2D_WithCorrectLocationOrigin(int x, int y,
-            [FloatAsRatio]float living,
-            [Frozen(Matching.ImplementedInterfaces)]ReverseTestShuffler shuffler, //we need to make sure max Location is in but do not want to use a complex shuffler
+            [FloatAsRatio] float living,
+            [Frozen(Matching.ImplementedInterfaces)]
+            ReverseTestShuffler shuffler, //we need to make sure max Location is in but do not want to use a complex shuffler
             Tissue2DFactory sut)
         {
-            Tissue2D result = sut.Create(x, y, living, 1-living);
+            Tissue2D result = sut.Create(x, y, living, 1 - living);
             VerifyLocationBounds(x, y, result);
         }
 
@@ -49,34 +51,36 @@ namespace CellGameTest.Tissue
         [AutoMoqData]
         public void Create_Tissue2D_CorrectCellsRatiosAreCreated(int x, int y,
             [FloatAsRatio] float variableRatio,
-            [Frozen(Matching.ImplementedInterfaces)] NullShuffle shuffler, //do not shuffle but inject when generating sut
+            [Frozen(Matching.ImplementedInterfaces)]
+            NullShuffle shuffler, //do not shuffle but inject when generating sut
             [Frozen] ICellFactory cellFactory,
             Tissue2DFactory sut)
         {
             var infected = variableRatio;
             var healthy = 1 - variableRatio;
-            var (expectedHealthyCells, expectedInfectedCells, expectedEmptyPlaces) 
+            (int expectedHealthyCells, int expectedInfectedCells, int expectedEmptyPlaces)
                 = CalculateExpectations(x, y, healthy, infected);
 
             _ = sut.Create(x, y, healthy, infected);
 
             var cellFactoryMock = Mock.Get(cellFactory);
-            
+
             VerifyCorrectCellCounts(cellFactoryMock, expectedHealthyCells, expectedInfectedCells, expectedEmptyPlaces);
         }
-        
+
         [Theory]
         [AutoMoqData]
         public void Create_Tissue2D_AllPositionsAreCreated(
-            [MinMaxInt(0,50)] int x, 
-            [MinMaxInt(0,50)] int y,
+            [MinMaxInt(0, 50)] int x,
+            [MinMaxInt(0, 50)] int y,
             [FloatAsRatio] float variableRatio,
-            [Frozen(Matching.ImplementedInterfaces)] NullShuffle shuffler, //do not shuffle but inject when generating sut
+            [Frozen(Matching.ImplementedInterfaces)]
+            NullShuffle shuffler, //do not shuffle but inject when generating sut
             Tissue2DFactory sut)
         {
             var infected = variableRatio;
             var healthy = 1 - variableRatio;
-            
+
             var result = sut.Create(x, y, healthy, infected);
 
             VerifyAllLocationAreCreated(x, y, result);
@@ -86,14 +90,15 @@ namespace CellGameTest.Tissue
         {
             var locations = result.Tissue.Keys.ToArray();
             var expectedLocations = new List<Location>();
-            for(int y = 0; y < maxY; y++)
-                for(int x = 0; x < maxX; x++)
-                    expectedLocations.Add(new Location(x,y));
+            for (int y = 0; y < maxY; y++)
+            for (int x = 0; x < maxX; x++)
+                expectedLocations.Add(new Location(x, y));
 
             locations.Should().BeEquivalentTo(expectedLocations);
         }
 
-        private static void VerifyCorrectCellCounts(Mock<ICellFactory> cellFactoryMock, int expectedHealthyCells, int expectedInfectedCells,
+        private static void VerifyCorrectCellCounts(Mock<ICellFactory> cellFactoryMock, int expectedHealthyCells,
+            int expectedInfectedCells,
             int expectedEmptyPlaces)
         {
             cellFactoryMock
@@ -107,12 +112,13 @@ namespace CellGameTest.Tissue
                     cf.CreateNullCell(), Times.Exactly(expectedEmptyPlaces));
         }
 
-        private static (int expectedHealthyCells, int expectedInfectedCells, int expectedEmptyPlaces) CalculateExpectations(
-            int x, int y, float healthy, float infected)
+        private static (int expectedHealthyCells, int expectedInfectedCells, int expectedEmptyPlaces)
+            CalculateExpectations(
+                int x, int y, float healthy, float infected)
         {
             var totalCount = x * y;
-            var expectedHealthyCells = (int) Math.Floor(totalCount * healthy);
-            var expectedInfectedCells = (int) Math.Floor(totalCount * infected);
+            var expectedHealthyCells = (int)Math.Floor(totalCount * healthy);
+            var expectedInfectedCells = (int)Math.Floor(totalCount * infected);
             var expectedEmptyPlaces = totalCount - expectedHealthyCells - expectedInfectedCells;
             return (expectedHealthyCells, expectedInfectedCells, expectedEmptyPlaces);
         }

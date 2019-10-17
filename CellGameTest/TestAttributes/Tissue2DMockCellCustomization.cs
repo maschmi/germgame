@@ -17,6 +17,7 @@ namespace CellGameTest.TestAttributes
         {
             _maxValue = maxValue;
         }
+
         public void Customize(IFixture fixture)
         {
             fixture.Customize<Tissue2D>(c => c.FromFactory(() =>
@@ -26,9 +27,9 @@ namespace CellGameTest.TestAttributes
 
                 var locations = new List<Location>();
                 for (int y = 0; y < maxY; y++)
-                    for (int x = 0; x < maxX; x++)
-                        locations.Add(new Location(x, y));
-                
+                for (int x = 0; x < maxX; x++)
+                    locations.Add(new Location(x, y));
+
                 ImmutableDictionary<Location, ICell> tissue = locations
                     .Aggregate(
                         ImmutableDictionary<Location, ICell>.Empty,

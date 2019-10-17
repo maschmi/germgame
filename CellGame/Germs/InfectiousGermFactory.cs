@@ -10,6 +10,7 @@ namespace CellGame.Germs
         {
             _eventaggregator = eventAggregator;
         }
+
         public IGerm CreateDefaultGerm()
         {
             return new LyticVirus(_eventaggregator);

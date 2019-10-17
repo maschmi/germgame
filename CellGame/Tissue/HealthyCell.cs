@@ -4,20 +4,20 @@ using CellGame.Germs;
 
 namespace CellGame.Tissue
 {
-    public sealed class HealthyCell : ICell 
-    
+    public sealed class HealthyCell : ICell
+
     {
         private readonly bool _isAlive;
         private readonly bool _isInfected = false;
         private readonly ushort _selfSignal;
         private readonly ushort _alertSignal;
         private readonly IGerm _germ;
-        
+
         public HealthyCell()
         {
             _isAlive = true;
-            _selfSignal = UInt16.MaxValue;
-            _alertSignal = UInt16.MinValue;
+            _selfSignal = ushort.MaxValue;
+            _alertSignal = ushort.MinValue;
             _germ = new NullGerm();
         }
 

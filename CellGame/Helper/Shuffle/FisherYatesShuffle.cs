@@ -8,7 +8,7 @@ namespace CellGame.Helper.Shuffle
         public IEnumerable<T> Shuffle<T>(in IEnumerable<T> input)
         {
             var result = input.ToArray();
-            
+
             var n = result.Length;
             while (n > 1)
             {

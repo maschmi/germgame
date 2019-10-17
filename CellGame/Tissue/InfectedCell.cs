@@ -22,17 +22,15 @@ namespace CellGame.Tissue
         public ICell Clone()
         {
             IGerm nextGenGerm = new NullGerm();
-            if(_isAlive)
-                 nextGenGerm = _germ.Replicate();
-            
+            if (_isAlive)
+                nextGenGerm = _germ.Replicate();
+
             return new InfectedCell(_isAlive, _selfSignal, _alertSignal, nextGenGerm);
         }
 
         public void Accept(ICellVisitor cellVisitor)
         {
-            cellVisitor.VisitCell(_isAlive, _selfSignal, _alertSignal, _isInfected);
+            cellVisitor?.VisitCell(_isAlive, _selfSignal, _alertSignal, _isInfected);
         }
-        
     }
 }
- 

@@ -11,7 +11,6 @@ namespace CellGameTest.Helper
 {
     public class FisherYatesShuffleTest
     {
-        
         public static IEnumerable<object[]> IntTestList = ShuffleTestData.IntTestList;
         public static IEnumerable<object[]> LocationTestList = ShuffleTestData.LocationTestList;
 
@@ -32,7 +31,7 @@ namespace CellGameTest.Helper
             var result = sut.Shuffle(input);
             VerifyShuffle(input, result);
         }
-        
+
         private static void VerifyShuffle<T>(IEnumerable<T> input, IEnumerable<T> result)
         {
             result.Should().NotBeSameAs(input);

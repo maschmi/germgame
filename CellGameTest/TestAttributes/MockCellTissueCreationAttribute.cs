@@ -13,10 +13,11 @@ namespace CellGameTest.TestAttributes
         {
             _maxValue = maxValue;
         }
+
         public override ICustomization GetCustomization(ParameterInfo parameter)
-        { 
+        {
             if (parameter == null) throw new ArgumentNullException(nameof(parameter));
-            
+
             return new Tissue2DMockCellCustomization(_maxValue);
         }
     }

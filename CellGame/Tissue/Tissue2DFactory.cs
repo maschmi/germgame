@@ -21,14 +21,14 @@ namespace CellGame.Tissue
             _germFactory = germFactory ?? throw new ArgumentNullException(nameof(germFactory));
             _shuffler = shuffler ?? throw new ArgumentNullException(nameof(shuffler));
         }
-        
+
         public Tissue2D Create(int maxX, int maxY, float ratioHealthyCells, float ratioInfectedCells)
         {
             maxX = Math.Abs(maxX);
             maxY = Math.Abs(maxY);
             var totalCount = maxY * maxX;
-            
-            if(ratioHealthyCells + ratioInfectedCells > 1)
+
+            if (ratioHealthyCells + ratioInfectedCells > 1)
                 throw new InvalidOperationException("Cannot create more then 100% cells.");
 
             int countHealthyCells = (int)Math.Floor(ratioHealthyCells * totalCount);
@@ -42,13 +42,13 @@ namespace CellGame.Tissue
             cells.AddRange(CreateEmptyPlaces(totalCount - countHealthyCells - countInfectedCells));
             var cellList = _shuffler.Shuffle(cells);
 
-            for(int y = 0; y < maxY; y++)
+            for (int y = 0; y < maxY; y++)
             for (int x = 0; x < maxX; x++)
             {
                 var currentCell = (y + 1) * (x + 1);
                 _tissue = _tissue.Add(
-                    new Location(xList.ElementAt(x),yList.ElementAt(y)),
-                    cellList.ElementAt(currentCell-1));                    
+                    new Location(xList.ElementAt(x), yList.ElementAt(y)),
+                    cellList.ElementAt(currentCell - 1));
             }
 
             return new Tissue2D(_tissue);
@@ -56,27 +56,18 @@ namespace CellGame.Tissue
 
         private IEnumerable<ICell> CreateEmptyPlaces(int count)
         {
-            for (int i = 0; i < count; i++)
-            {
-                yield return _cellFactory.CreateNullCell();
-            }
+            for (int i = 0; i < count; i++) yield return _cellFactory.CreateNullCell();
         }
 
         private IEnumerable<ICell> CreateInfectedCells(int count)
         {
             var germ = _germFactory.CreateDefaultGerm();
-            for (int i = 0; i < count; i++)
-            {
-                yield return _cellFactory.CreateInfectedCell(germ);
-            }
+            for (int i = 0; i < count; i++) yield return _cellFactory.CreateInfectedCell(germ);
         }
 
         private IEnumerable<ICell> CreateHealthyCells(int count)
         {
-            for (int i = 0; i < count; i++)
-            {
-                yield return _cellFactory.CreateHealthyCell();
-            }
+            for (int i = 0; i < count; i++) yield return _cellFactory.CreateHealthyCell();
         }
     }
 }

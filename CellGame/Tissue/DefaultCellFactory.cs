@@ -11,8 +11,8 @@ namespace CellGame.Tissue
 
         public ICell CreateInfectedCell(IGerm germ) =>
             new InfectedCell(true,
-                UInt16.MaxValue / 2,
-                UInt16.MaxValue / 2,
+                ushort.MaxValue / 2,
+                ushort.MaxValue / 2,
                 germ);
 
         public ICell CreateNullCell()
