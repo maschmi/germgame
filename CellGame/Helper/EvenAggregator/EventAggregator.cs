@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace CellGame.Helper
 {
-    internal sealed class EventAggregator : IEventAggregator
+    internal sealed class EventAggregator
     {
-        private ConcurrentDictionary<Type, List<WeakReference<object>>> _register =
+        private readonly ConcurrentDictionary<Type, List<WeakReference<object>>> _register =
             new ConcurrentDictionary<Type, List<WeakReference<object>>>();
 
         public async Task Publish<TEvent>(TEvent message) where TEvent : IMessage

@@ -10,7 +10,7 @@ namespace CellGame.RunGame
 {
     internal class NullInfectionPropagation : IPropagateInfection
     {
-        public NullInfectionPropagation(IGermFactory germFactory, IEventAggregator eventAggregator)
+        public NullInfectionPropagation(IGermFactory germFactory, EventAggregator eventAggregator)
         {
             //null implementation
         }

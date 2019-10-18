@@ -14,16 +14,17 @@ namespace CellGame.RunGame
         private Random _random = new Random();
         private readonly ConcurrentBag<IGerm> _germReservoir = new ConcurrentBag<IGerm>();
         private readonly IGermFactory _germFactory;
-        private IEventAggregator _eventAggregator;
+        private EventAggregator _eventAggregator;
 
         private const double ChanceToEncounterACell = 0.9;
         
-        public RandomInfectionPropagation(IGermFactory germFactory, IEventAggregator eventAggregator)
+        public RandomInfectionPropagation(IGermFactory germFactory, EventAggregator eventAggregator)
         {
             _germFactory = germFactory;
             _eventAggregator = eventAggregator;
             _eventAggregator.Subscribe(this);
         }
+        
         public ICell PropagateInfection(ICell cell)
         {
             if (_germReservoir.TryTake(out IGerm germ))
@@ -43,11 +44,10 @@ namespace CellGame.RunGame
             return cell.Clone();
         }
 
-        private void PublishCellInfection()
+        private async void PublishCellInfection()
         {
-            _eventAggregator.Publish(new CellInfectionMessage(this));
+            await _eventAggregator.Publish(new CellInfectionMessage(this));
         }
-
 
         public async Task ProcessMessageAsync(GermGrowthMessage message)
         {

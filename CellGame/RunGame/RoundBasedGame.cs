@@ -15,15 +15,21 @@ namespace CellGame.RunGame
 
 
         public RoundBasedGame(IGrowTissue growthMechanism, IPropagateInfection infectionPropagation,
-            IEventAggregator eventAggregator, bool logMessages = true)
+            EventAggregator eventAggregator, bool logMessages = true)
         {
             _growthMechanism = growthMechanism ?? throw new ArgumentException(nameof(growthMechanism));
             _infectionPropagation = infectionPropagation ?? throw new ArgumentException(nameof(infectionPropagation));
-            if (logMessages)
-            {
-                eventAggregator.Subscribe<GermGrowthMessage> (this);
-                eventAggregator.Subscribe<CellInfectionMessage> (this);
-            }
+ 
+            SubscribeToLogMessages(eventAggregator, logMessages);
+        }
+
+        private void SubscribeToLogMessages(EventAggregator eventAggregator, bool logMessages)
+        {
+            if (!logMessages) 
+                return;
+            
+            eventAggregator.Subscribe<GermGrowthMessage>(this);
+            eventAggregator.Subscribe<CellInfectionMessage>(this);
         }
 
         public Tissue2D Advance(Tissue2D input)

@@ -8,7 +8,6 @@ namespace CellGame.Tissue
 
     {
         private readonly bool _isAlive;
-        private readonly bool _isInfected = false;
         private readonly ushort _selfSignal;
         private readonly ushort _alertSignal;
         private readonly IGerm _germ;
@@ -21,7 +20,7 @@ namespace CellGame.Tissue
             _germ = new NullGerm();
         }
 
-        public HealthyCell(bool isAlive, ushort selfSignal, ushort alertSignal)
+        private HealthyCell(bool isAlive, ushort selfSignal, ushort alertSignal)
         {
             _isAlive = isAlive;
             _selfSignal = selfSignal;

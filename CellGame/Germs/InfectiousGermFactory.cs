@@ -4,9 +4,9 @@ namespace CellGame.Germs
 {
     internal class InfectiousGermFactory : IGermFactory
     {
-        private readonly IEventAggregator _eventaggregator;
+        private readonly EventAggregator _eventaggregator;
 
-        public InfectiousGermFactory(IEventAggregator eventAggregator)
+        public InfectiousGermFactory(EventAggregator eventAggregator)
         {
             _eventaggregator = eventAggregator;
         }

@@ -40,7 +40,8 @@ namespace CellGame
                 round.PrintTissue();
                 Thread.Sleep(500);
             }
-            
+
+            Console.ReadKey();
         }
     }
 }

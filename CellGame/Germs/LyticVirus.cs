@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using CellGame.Germs.Messages;
 using CellGame.Helper;
 using CellGame.Tissue;
@@ -21,27 +22,27 @@ namespace CellGame.Germs
 
         private bool _canInfectCell = false;
         private (ushort selfSignal, ushort alertSignal) _originCellSignals;
-        private readonly IEventAggregator _eventAggregator;
+        private readonly EventAggregator _eventAggregator;
 
-        public LyticVirus(IEventAggregator eventAggregator)
+        public LyticVirus(EventAggregator eventAggregator)
         {
             _generation = 0;
             _isMature = false;
             _eventAggregator = eventAggregator ?? throw new ArgumentNullException(nameof(eventAggregator));
         }
 
-        internal LyticVirus(int currentGeneration, IEventAggregator eventAggregator)
+        private LyticVirus(int currentGeneration, EventAggregator eventAggregator)
         {
             _generation = currentGeneration;
             _eventAggregator = eventAggregator ?? throw new ArgumentNullException(nameof(eventAggregator));
             _isMature = _generation >= GenToReplicateIn;
-            if (_isMature)
-                PublishGermGowth();
+            if (_isMature) 
+                PublishGermGowthAsync();
         }
 
-        private void PublishGermGowth()
+        private async void PublishGermGowthAsync()
         {
-            _eventAggregator.Publish(
+            await _eventAggregator.Publish(
                 new GermGrowthMessage(IsLytic, IsBudding, ReplicationMultiplier, this));
         }
 
