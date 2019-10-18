@@ -28,11 +28,31 @@ namespace CellGame.Tissue
 
         public void PrintTissue()
         {
-            CreateOutput(_tissue.Tissue);
-            Console.WriteLine(_buffer.ToString());
+            WriteColorOutput(_tissue.Tissue);
         }
 
-        public void CreateOutput(ImmutableDictionary<Location, ICell> tissue)
+
+        private void WriteColorOutput(ImmutableDictionary<Location, ICell> tissue)
+        {
+            var defaultColor = Console.ForegroundColor;
+            
+            for (int y = 0; y <= _maxY; y++)
+            {
+                for (int x = 0; x <= _maxX; x++)
+                {
+                    var currentLocation = new Location(x, y);
+                    var cell = tissue[currentLocation];
+
+                    (var color, var code) = _cellStringEncoder.GetColorEncodedCell(cell);
+                    Console.ForegroundColor = color;
+                    Console.Write(code);
+                    Console.ForegroundColor = defaultColor;
+                }
+                Console.WriteLine();
+            }
+        }
+            
+        private void CreateOutput(ImmutableDictionary<Location, ICell> tissue)
         {
             for (int y = 0; y <= _maxY; y++)
             {

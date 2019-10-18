@@ -1,7 +1,7 @@
 ﻿using System;
 using CellGame.Helper;
 
-namespace CellGame.Germs
+namespace CellGame.Germs.Messages
 {
     public class GermGrowthMessage : IMessage
     {

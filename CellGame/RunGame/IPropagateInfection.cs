@@ -5,7 +5,6 @@ namespace CellGame.RunGame
 {
     internal interface IPropagateInfection
     {
-        event EventHandler<NewGermsEventArgs> GermReproduction;
-        ICell PropagateInfection(InfectedCell infectedCell);
+        ICell PropagateInfection(ICell cell);
     }
 }

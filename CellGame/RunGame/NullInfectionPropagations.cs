@@ -1,15 +1,27 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+using CellGame.Germs;
+using CellGame.Germs.Messages;
+using CellGame.Helper;
 using CellGame.Tissue;
 
 namespace CellGame.RunGame
 {
     internal class NullInfectionPropagation : IPropagateInfection
     {
-        public event EventHandler<NewGermsEventArgs> GermReproduction;
-
-        public ICell PropagateInfection(InfectedCell infectedCell)
+        public NullInfectionPropagation(IGermFactory germFactory, IEventAggregator eventAggregator)
         {
-            return infectedCell.Clone();
+            //null implementation
+        }
+        public ICell PropagateInfection(ICell cell)
+        {
+            return cell.Clone();
+        }
+
+        public async Task ProcessMessageAsync(GermGrowthMessage message)
+        {
+            await Task.CompletedTask;
         }
     }
 }

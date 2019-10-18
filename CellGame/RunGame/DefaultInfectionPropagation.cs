@@ -5,11 +5,10 @@ namespace CellGame.RunGame
 {
     internal class DefaultInfectionPropagation : IPropagateInfection
     {
-        public event EventHandler<NewGermsEventArgs> GermReproduction;
 
-        public ICell PropagateInfection(InfectedCell infectedCell)
+        public ICell PropagateInfection(ICell cell)
         {
-            return infectedCell.Clone();
+            return cell.Clone();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace CellGame.Helper
                 foreach (var listener in invocationList)
                     if (listener.TryGetTarget(out object handler))
                     {
-                        if (handler is IListener<TEvent> concreteHandler)
+                        if (handler is IListenOn<TEvent> concreteHandler)
                             await concreteHandler.ProcessMessageAsync(message);
                     }
                     else
@@ -25,9 +25,9 @@ namespace CellGame.Helper
                     }
         }
 
-        public void Subscribe<TEvent>(IListener<TEvent> listener) where TEvent : IMessage
+        public void Subscribe<TEvent>(IListenOn<TEvent> listenOn) where TEvent : IMessage
         {
-            var listenerRef = new WeakReference<object>(listener);
+            var listenerRef = new WeakReference<object>(listenOn);
 
             List<WeakReference<object>> AddFunction(Type arg)
             {

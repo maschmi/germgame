@@ -3,13 +3,13 @@ using CellGame.Germs;
 
 namespace CellGame.Tissue
 {
-    public sealed class InfectedCell : ICell
+    public sealed class InfectedCell : ICell, IGermVistor
     {
         private readonly bool _isAlive;
-        private readonly bool _isInfected = true;
         private readonly ushort _selfSignal;
         private readonly ushort _alertSignal;
         private readonly IGerm _germ;
+        private bool _germReplicationKillsCell;
 
         public InfectedCell(bool isAlive, ushort selfSignal, ushort alertSignal, IGerm germ)
         {
@@ -21,16 +21,24 @@ namespace CellGame.Tissue
 
         public ICell Clone()
         {
-            IGerm nextGenGerm = new NullGerm();
             if (_isAlive)
-                nextGenGerm = _germ.Replicate();
-
-            return new InfectedCell(_isAlive, _selfSignal, _alertSignal, nextGenGerm);
+            {
+                var nextGenGerm = _germ.Replicate();
+                nextGenGerm.Accept(this);
+                return new InfectedCell(!_germReplicationKillsCell, _selfSignal, _alertSignal, nextGenGerm);
+            }
+            
+            return new NullCell();
         }
 
         public void Accept(ICellVisitor cellVisitor)
         {
-            cellVisitor?.VisitCell(_isAlive, _selfSignal, _alertSignal, _isInfected);
+            cellVisitor?.VisitCell(_isAlive, _selfSignal, _alertSignal);
+        }
+
+        public void Visit(bool isMature, bool isLytic, bool isBudding)
+        {
+            _germReplicationKillsCell = isMature && isLytic;
         }
     }
 }

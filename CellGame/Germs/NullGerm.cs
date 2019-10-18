@@ -8,7 +8,11 @@ namespace CellGame.Germs
     {
         private ICell _healthyCellToReturn;
 
-        public void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal, bool isInfected)
+        public NullGerm()
+        {
+                
+        }
+        public void VisitCell(bool isAlive, ushort selfSignal, ushort alertSignal)
         {
             _healthyCellToReturn = new HealthyCell();
         }
@@ -17,6 +21,11 @@ namespace CellGame.Germs
         {
             cellToInfect.Accept(this);
             return _healthyCellToReturn;
+        }
+
+        public void Accept(IGermVistor visitor)
+        {
+            //do noting
         }
 
         public IGerm Replicate()
