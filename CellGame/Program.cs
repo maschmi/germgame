@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using CellGame.Germs;
 using CellGame.Helper;
+using CellGame.Helper.EvenAggregator;
 using CellGame.Helper.Shuffle;
 using CellGame.RunGame;
 using CellGame.Tissue;

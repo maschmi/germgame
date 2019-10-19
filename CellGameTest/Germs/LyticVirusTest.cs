@@ -4,6 +4,7 @@ using AutoFixture.Xunit2;
 using CellGame.Germs;
 using CellGame.Germs.Messages;
 using CellGame.Helper;
+using CellGame.Helper.EvenAggregator;
 using CellGame.Tissue;
 using CellGameTest.TestAttributes;
 using CellGameTest.TestHelper;

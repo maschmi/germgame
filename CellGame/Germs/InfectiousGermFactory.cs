@@ -1,4 +1,5 @@
 ﻿using CellGame.Helper;
+using CellGame.Helper.EvenAggregator;
 
 namespace CellGame.Germs
 {

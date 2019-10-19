@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CellGame.Helper
+namespace CellGame.Helper.EvenAggregator
 {
     internal sealed class EventAggregator
     {

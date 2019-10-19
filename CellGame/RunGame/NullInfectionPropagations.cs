@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using CellGame.Germs;
 using CellGame.Germs.Messages;
 using CellGame.Helper;
+using CellGame.Helper.EvenAggregator;
 using CellGame.Tissue;
 
 namespace CellGame.RunGame

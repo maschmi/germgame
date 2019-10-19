@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using CellGame.Germs.Messages;
 using CellGame.Helper;
+using CellGame.Helper.EvenAggregator;
 using CellGame.RunGame.Messages;
 using CellGame.Tissue;
 

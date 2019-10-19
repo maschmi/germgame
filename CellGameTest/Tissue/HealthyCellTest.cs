@@ -2,6 +2,7 @@
 using AutoFixture;
 using AutoFixture.AutoMoq;
 using CellGame.Tissue;
+using CellGameTest.TestAttributes;
 using FluentAssertions;
 using Moq;
 using Xunit;
@@ -11,34 +12,30 @@ namespace CellGameTest.Tissue
     [ExcludeFromCodeCoverage]
     public class HealthyCellTest
     {
-        [Fact]
-        public void HealthyCellConstructorSetsDefaultParameters()
+        [Theory]
+        [AutoMoqData]
+        public void HealthyCellConstructorSetsDefaultParameters(
+            ICellVisitor visitor,
+            HealthyCell sut)
         {
-            var fixture = new Fixture().Customize(new AutoMoqCustomization());
-            var visitor = fixture.Create<ICellVisitor>();
-            
-            var sut = fixture.Create<HealthyCell>();
-            
             sut.Accept(visitor);
             VerifyHealhyCellWithDefault(visitor);
         }
         
-        [Fact]
-        public void HealthyCellCloneCreatesNewCellWithSameParametersAsParentCell()
+        [Theory]
+        [AutoMoqData]
+        public void HealthyCellCloneCreatesNewCellWithSameParametersAsParentCell(
+            ICellVisitor visitsParent,
+            ICellVisitor visitsClone,
+            HealthyCell sut)
         {
-            var fixture = new Fixture().Customize(new AutoMoqCustomization());
-            var visitor = fixture.Create<ICellVisitor>();
-            var visitsNewCell = fixture.Create<ICellVisitor>();
-
-            var sut = fixture.Create<HealthyCell>();
-            sut.Accept(visitor);
-            VerifyHealhyCellWithDefault(visitor);
-
+            sut.Accept(visitsParent);
             var newCell = sut.Clone();
-
+            newCell.Accept(visitsClone);
+            
             newCell.Should().NotBeSameAs(sut);
-            newCell.Accept(visitsNewCell);
-            VerifyHealhyCellWithDefault(visitsNewCell);
+            VerifyHealhyCellWithDefault(visitsParent);
+            VerifyHealhyCellWithDefault(visitsClone);
         }
 
         private static void VerifyHealhyCellWithDefault(ICellVisitor visitor)
