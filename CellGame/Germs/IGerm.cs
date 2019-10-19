@@ -3,7 +3,7 @@ using CellGame.Tissue;
 
 namespace CellGame.Germs
 {
-    public interface IGerm : ICellVisitor
+    public interface IGerm 
     {
         ICell InfectCell(ICell cellToInfect);
         void Accept(IGermVistor visitor);

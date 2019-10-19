@@ -7,7 +7,7 @@ using CellGame.Tissue;
 
 namespace CellGame.Germs
 {
-    internal class LyticVirus : IGerm
+    internal class LyticVirus : IGerm, ICellVisitor
     {
         private readonly Random _random = new Random();
         
